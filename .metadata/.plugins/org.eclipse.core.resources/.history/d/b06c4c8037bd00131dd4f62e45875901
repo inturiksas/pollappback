@@ -1,0 +1,32 @@
+package us.pollapp.sevenminds;
+
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.http.*;
+import us.pollapp.sevenminds.businesslogic.LModels;
+import us.pollapp.sevenminds.model.Model;
+
+@SuppressWarnings("serial")
+public class PollApp_BackendServlet extends HttpServlet {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		resp.setContentType("text/plain");
+		resp.getWriter().println("Hello, world");
+
+		LModels objLModels = new LModels();
+
+		try {
+
+			List<Model> lstModel = objLModels.getAllModelsActive();
+
+			for (Model modelo : lstModel) {
+				System.out.println("Nombre de la Modelo = " + modelo.getName());
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}

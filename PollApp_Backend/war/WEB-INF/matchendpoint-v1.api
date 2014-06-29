@@ -1,0 +1,375 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://pollappusinturik.appspot.com/_ah/api",
+  "name" : "matchendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://pollappusinturik.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "pollapp.us",
+  "ownerName" : "pollapp.us",
+  "packagePath" : "inturik.endpoints",
+  "methods" : {
+    "matchendpoint.getResultsMatch" : {
+      "path" : "getResultsMatch",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.MatchEndpoint.getResultsMatch",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "pageNumber" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "pageSize" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "idPolla" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "idMatch" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "matchendpoint.setResultMatchByUser" : {
+      "path" : "setResultMatchByUser",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.MatchEndpoint.setResultMatchByUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "matchendpoint.updateResultMatchOriginal" : {
+      "path" : "updateResultMatchOriginal",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.MatchEndpoint.updateResultMatchOriginal",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "matchendpoint.getMatchsByRound" : {
+      "path" : "getMatchsByRound",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.MatchEndpoint.getMatchsByRound",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "pageNumber" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "pageSize" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "idRound" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "MsgGetResulstMatchResponse" : {
+        "id" : "MsgGetResulstMatchResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "lstResultMatchDTO" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ResultMatchDTO"
+            }
+          }
+        }
+      },
+      "ContextResponseDTO" : {
+        "id" : "ContextResponseDTO",
+        "type" : "object",
+        "properties" : {
+          "transactionDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "transactionState" : {
+            "type" : "boolean"
+          },
+          "idTransaccion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ResultMatchDTO" : {
+        "id" : "ResultMatchDTO",
+        "type" : "object",
+        "properties" : {
+          "idResultMatch" : {
+            "type" : "integer"
+          },
+          "names" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "scoreTeamA" : {
+            "type" : "integer"
+          },
+          "scoreTeamB" : {
+            "type" : "integer"
+          },
+          "totalScore" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgSetResultMatchRequest" : {
+        "id" : "MsgSetResultMatchRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequestDTO" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "idUser" : {
+            "type" : "integer"
+          },
+          "idPolla" : {
+            "type" : "integer"
+          },
+          "idMatch" : {
+            "type" : "integer"
+          },
+          "scoreTeamA" : {
+            "type" : "integer"
+          },
+          "scoreTeamB" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "ContextRequestDTO" : {
+        "id" : "ContextRequestDTO",
+        "type" : "object",
+        "properties" : {
+          "idTransaction" : {
+            "type" : "string"
+          },
+          "userName" : {
+            "type" : "string"
+          },
+          "applicationName" : {
+            "type" : "string"
+          },
+          "pageNumber" : {
+            "type" : "integer"
+          },
+          "pageSize" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgSetResultMatchResponse" : {
+        "id" : "MsgSetResultMatchResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      },
+      "MsgUpdateResultMatchOriginalRequest" : {
+        "id" : "MsgUpdateResultMatchOriginalRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequestDTO" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "idMatch" : {
+            "type" : "integer"
+          },
+          "scoreTeamAOrg" : {
+            "type" : "integer"
+          },
+          "scoreTeamBOrg" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgUpdateResultMatchOriginalResponse" : {
+        "id" : "MsgUpdateResultMatchOriginalResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      },
+      "MsgGetMatchsByRoundResponse" : {
+        "id" : "MsgGetMatchsByRoundResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "lstMatchDTO" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "MatchDTO"
+            }
+          }
+        }
+      },
+      "MatchDTO" : {
+        "id" : "MatchDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "teamA" : {
+            "type" : "string"
+          },
+          "teamB" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "hour" : {
+            "type" : "string"
+          },
+          "nameGroup" : {
+            "type" : "string"
+          },
+          "flagTeamA" : {
+            "type" : "string"
+          },
+          "flagTeamB" : {
+            "type" : "string"
+          },
+          "stadium" : {
+            "type" : "string"
+          },
+          "resultTeamA" : {
+            "type" : "integer"
+          },
+          "resultTeamB" : {
+            "type" : "integer"
+          },
+          "round" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "us.pollapp.inturik.endpoints.MatchEndpoint.getResultsMatch" : {
+        "response" : {
+          "$ref" : "MsgGetResulstMatchResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.MatchEndpoint.setResultMatchByUser" : {
+        "request" : {
+          "$ref" : "MsgSetResultMatchRequest"
+        },
+        "response" : {
+          "$ref" : "MsgSetResultMatchResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.MatchEndpoint.updateResultMatchOriginal" : {
+        "request" : {
+          "$ref" : "MsgUpdateResultMatchOriginalRequest"
+        },
+        "response" : {
+          "$ref" : "MsgUpdateResultMatchOriginalResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.MatchEndpoint.getMatchsByRound" : {
+        "response" : {
+          "$ref" : "MsgGetMatchsByRoundResponse"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,323 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"0NZZm4UuLZgEQBhMTwnFS1XIMrM/Wn7Vhlh-mQzeKy28pqcszV6IZOM\"",
+ "discoveryVersion": "v1",
+ "id": "modelendpoint:v1",
+ "name": "modelendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "pollapp.us",
+ "ownerName": "pollapp.us",
+ "packagePath": "inturik.endpoints",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://pollappusinturik.appspot.com/_ah/api/modelendpoint/v1/",
+ "basePath": "/_ah/api/modelendpoint/v1/",
+ "rootUrl": "https://pollappusinturik.appspot.com/_ah/api/",
+ "servicePath": "modelendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "ContextRequestDTO": {
+   "id": "ContextRequestDTO",
+   "type": "object",
+   "properties": {
+    "applicationName": {
+     "type": "string"
+    },
+    "idTransaction": {
+     "type": "string"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "pageSize": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "userName": {
+     "type": "string"
+    }
+   }
+  },
+  "ContextResponseDTO": {
+   "id": "ContextResponseDTO",
+   "type": "object",
+   "properties": {
+    "idTransaccion": {
+     "type": "string"
+    },
+    "transactionDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "transactionState": {
+     "type": "boolean"
+    }
+   }
+  },
+  "ModelDTO": {
+   "id": "ModelDTO",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string"
+    },
+    "nameCountry": {
+     "type": "string"
+    },
+    "picturesModel": {
+     "type": "array",
+     "items": {
+      "$ref": "PictureModelDTO"
+     }
+    },
+    "score": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgGetAllModelsActiveResponse": {
+   "id": "MsgGetAllModelsActiveResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "models": {
+     "type": "array",
+     "items": {
+      "$ref": "ModelDTO"
+     }
+    }
+   }
+  },
+  "MsgGetModelByIdResponse": {
+   "id": "MsgGetModelByIdResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "model": {
+     "$ref": "ModelDTO"
+    }
+   }
+  },
+  "MsgVoteByModelRequest": {
+   "id": "MsgVoteByModelRequest",
+   "type": "object",
+   "properties": {
+    "contextRequest": {
+     "$ref": "ContextRequestDTO"
+    },
+    "idModel": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "idUser": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "score": {
+     "type": "number",
+     "format": "double"
+    }
+   }
+  },
+  "MsgVoteByModelResponse": {
+   "id": "MsgVoteByModelResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "PictureModelDTO": {
+   "id": "PictureModelDTO",
+   "type": "object",
+   "properties": {
+    "active": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "main": {
+     "type": "boolean"
+    },
+    "picture": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getAllModelsActivePagination": {
+   "id": "modelendpoint.getAllModelsActivePagination",
+   "path": "getAllModelsActivePagination",
+   "httpMethod": "GET",
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "pageSize": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idTransaction",
+    "pageNumber",
+    "pageSize",
+    "user"
+   ],
+   "response": {
+    "$ref": "MsgGetAllModelsActiveResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getModelById": {
+   "id": "modelendpoint.getModelById",
+   "path": "getModelById",
+   "httpMethod": "GET",
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "idModel": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idModel",
+    "idTransaction",
+    "user"
+   ],
+   "response": {
+    "$ref": "MsgGetModelByIdResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "voteByModel": {
+   "id": "modelendpoint.voteByModel",
+   "path": "voteByModel",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "MsgVoteByModelRequest",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "MsgVoteByModelResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

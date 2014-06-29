@@ -1,0 +1,10 @@
+1393815820003	Rename field 'idTransaccion'
+1393815826803	Rename type 'ContextRequest'
+1393989964905	Rename field 'tblcountry'
+1393990220641	Rename field 'ballots'
+1393990233878	Rename field 'setBallots'
+1393990888967	Rename type 'Pollapp'
+1393991173653	Rename type 'PollApp'
+1393991180635	Rename type 'PollAppModel'
+1393991694761	Delete elements
+1394081125521	Delete element

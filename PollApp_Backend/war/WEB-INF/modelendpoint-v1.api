@@ -1,0 +1,274 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://pollappusinturik.appspot.com/_ah/api",
+  "name" : "modelendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://pollappusinturik.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "pollapp.us",
+  "ownerName" : "pollapp.us",
+  "packagePath" : "inturik.endpoints",
+  "methods" : {
+    "modelendpoint.getModelById" : {
+      "path" : "getModelById",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.ModelsEndpoint.getModelById",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idModel" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "modelendpoint.getAllModelsActivePagination" : {
+      "path" : "getAllModelsActivePagination",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.ModelsEndpoint.getAllModelsActivePagination",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "pageNumber" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "pageSize" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "modelendpoint.voteByModel" : {
+      "path" : "voteByModel",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.ModelsEndpoint.voteByModel",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "MsgGetModelByIdResponse" : {
+        "id" : "MsgGetModelByIdResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "model" : {
+            "$ref" : "ModelDTO"
+          }
+        }
+      },
+      "ContextResponseDTO" : {
+        "id" : "ContextResponseDTO",
+        "type" : "object",
+        "properties" : {
+          "transactionDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "transactionState" : {
+            "type" : "boolean"
+          },
+          "idTransaccion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ModelDTO" : {
+        "id" : "ModelDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "score" : {
+            "type" : "integer"
+          },
+          "nameCountry" : {
+            "type" : "string"
+          },
+          "picturesModel" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "PictureModelDTO"
+            }
+          }
+        }
+      },
+      "PictureModelDTO" : {
+        "id" : "PictureModelDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "picture" : {
+            "type" : "string"
+          },
+          "active" : {
+            "type" : "boolean"
+          },
+          "main" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "MsgGetAllModelsActiveResponse" : {
+        "id" : "MsgGetAllModelsActiveResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "models" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ModelDTO"
+            }
+          }
+        }
+      },
+      "MsgVoteByModelRequest" : {
+        "id" : "MsgVoteByModelRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequest" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "idModel" : {
+            "type" : "integer"
+          },
+          "idUser" : {
+            "type" : "integer"
+          },
+          "score" : {
+            "type" : "number"
+          }
+        }
+      },
+      "ContextRequestDTO" : {
+        "id" : "ContextRequestDTO",
+        "type" : "object",
+        "properties" : {
+          "idTransaction" : {
+            "type" : "string"
+          },
+          "userName" : {
+            "type" : "string"
+          },
+          "applicationName" : {
+            "type" : "string"
+          },
+          "pageNumber" : {
+            "type" : "integer"
+          },
+          "pageSize" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgVoteByModelResponse" : {
+        "id" : "MsgVoteByModelResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "us.pollapp.inturik.endpoints.ModelsEndpoint.getModelById" : {
+        "response" : {
+          "$ref" : "MsgGetModelByIdResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.ModelsEndpoint.getAllModelsActivePagination" : {
+        "response" : {
+          "$ref" : "MsgGetAllModelsActiveResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.ModelsEndpoint.voteByModel" : {
+        "request" : {
+          "$ref" : "MsgVoteByModelRequest"
+        },
+        "response" : {
+          "$ref" : "MsgVoteByModelResponse"
+        }
+      }
+    }
+  }
+}

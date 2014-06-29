@@ -1,0 +1,5 @@
+package us.pollapp.inturik.util;
+
+public class Error {
+
+}

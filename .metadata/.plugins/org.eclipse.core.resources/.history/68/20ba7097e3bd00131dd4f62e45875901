@@ -1,0 +1,125 @@
+package us.pollapp.inturik.endpoints;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.api.server.spi.config.Api;
+import com.google.api.server.spi.config.ApiMethod;
+import com.google.api.server.spi.config.ApiMethod.HttpMethod;
+import com.google.api.server.spi.config.ApiNamespace;
+
+import us.pollapp.inturik.DTO.ContextRequestDTO;
+import us.pollapp.inturik.DTO.ContextResponseDTO;
+import us.pollapp.inturik.DTO.Messages.MsgGetAllModelsActiveRequest;
+import us.pollapp.inturik.DTO.Messages.MsgGetAllModelsActiveResponse;
+import us.pollapp.inturik.DTO.Messages.MsgGetModelByIdRequest;
+import us.pollapp.inturik.DTO.Messages.MsgGetModelByIdResponse;
+import us.pollapp.inturik.DTO.Messages.MsgVoteByModelRequest;
+import us.pollapp.inturik.DTO.Messages.MsgVoteByModelResponse;
+import us.pollapp.inturik.businesslogic.LModels;
+import us.pollapp.inturik.businessprocess.VotoManagement;
+import us.pollapp.inturik.endpoints.utils.UtilContext;
+import us.pollapp.inturik.model.Model;
+import us.pollapp.inturik.transformDTO.ModelsTransform;
+
+@Api(name = "modelendpoint", namespace = @ApiNamespace(ownerDomain = "pollapp.us", ownerName = "pollapp.us", packagePath = "inturik.endpoints"), version = "v1")
+public class ModelsEndpoint {
+
+	@ApiMethod(name = "getAllModelsActive", path = "getAllModelsActive", httpMethod = HttpMethod.GET)
+	public MsgGetAllModelsActiveResponse getAllModelsActive(
+			MsgGetAllModelsActiveRequest msgResquest) throws Exception {
+
+		MsgGetAllModelsActiveResponse msgResponse = new MsgGetAllModelsActiveResponse();
+
+		ContextResponseDTO contextResponse = UtilContext
+				.getFillContextResponseDTOBasic(msgResquest.getContextRequest());
+		msgResponse.setContextResponse(contextResponse);
+
+		try {
+
+			LModels objLModels = new LModels();
+
+			ContextRequestDTO request = msgResquest.getContextRequest();
+			List<Model> lstModels = new ArrayList<>();
+
+			if (request.getPageNumber() != 0 && request.getPageSize() != 0) {
+				lstModels = objLModels.getAllModelsActive(
+						request.getPageNumber(), request.getPageSize());
+			} else {
+				lstModels = objLModels.getAllModelsActive();
+			}
+
+			ModelsTransform transform = new ModelsTransform();
+
+			msgResponse.setModels(transform.transformListDTO(lstModels));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgResponse.getContextResponse().setTransactionState(false);
+		}
+
+		return msgResponse;
+
+	}
+
+	@ApiMethod(name = "getModelById", path = "getModelById", httpMethod = HttpMethod.GET)
+	public MsgGetModelByIdResponse getModelById(
+			MsgGetModelByIdRequest msgGetModelByIdRequest) throws Exception {
+
+		// TODO: Validar parametros de entrada
+		
+		MsgGetModelByIdResponse msgResponse = new MsgGetModelByIdResponse();
+
+		ContextResponseDTO contextResponse = UtilContext
+				.getFillContextResponseDTOBasic(msgGetModelByIdRequest
+						.getContextRequest());
+		msgResponse.setContextResponse(contextResponse);
+
+		try {
+			LModels objLModels = new LModels();
+
+			Model objModel = objLModels.getModelById(msgGetModelByIdRequest
+					.getId());
+
+			ModelsTransform transform = new ModelsTransform();
+
+			msgResponse.setModel(transform.transformDTO(objModel));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgResponse.getContextResponse().setTransactionState(false);
+		}
+
+		return msgResponse;
+	}
+
+	@ApiMethod(name = "voteByModel", path = "voteByModel", httpMethod = HttpMethod.POST)
+	public MsgVoteByModelResponse voteByModel(
+			MsgVoteByModelRequest msgVoteByModelRequest) throws Exception {
+
+		// TODO: Validar parametros de entrada
+		
+		MsgVoteByModelResponse msgResponse = new MsgVoteByModelResponse();
+
+		ContextResponseDTO contextResponse = UtilContext
+				.getFillContextResponseDTOBasic(msgVoteByModelRequest
+						.getContextRequest());
+		msgResponse.setContextResponse(contextResponse);
+
+		try {
+
+			VotoManagement objVotoManagement = new VotoManagement();
+
+			objVotoManagement.addVote(msgVoteByModelRequest.getIdModel(),
+					msgVoteByModelRequest.getIdUser(),
+					msgVoteByModelRequest.getScore());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgResponse.getContextResponse().setTransactionState(false);
+		}
+
+		return msgResponse;
+	}
+
+}

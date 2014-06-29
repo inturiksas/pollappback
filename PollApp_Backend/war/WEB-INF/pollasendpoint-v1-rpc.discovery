@@ -1,0 +1,524 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"0NZZm4UuLZgEQBhMTwnFS1XIMrM/S1-Psv-H96DbvtdoGGIs3OOGRs8\"",
+ "discoveryVersion": "v1",
+ "id": "pollasendpoint:v1",
+ "name": "pollasendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "pollapp.us",
+ "ownerName": "pollapp.us",
+ "packagePath": "inturik.endpoints",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://pollappusinturik.appspot.com/_ah/api/",
+ "rpcUrl": "https://pollappusinturik.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "ContextRequestDTO": {
+   "id": "ContextRequestDTO",
+   "type": "object",
+   "properties": {
+    "applicationName": {
+     "type": "string"
+    },
+    "idTransaction": {
+     "type": "string"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "pageSize": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "userName": {
+     "type": "string"
+    }
+   }
+  },
+  "ContextResponseDTO": {
+   "id": "ContextResponseDTO",
+   "type": "object",
+   "properties": {
+    "idTransaccion": {
+     "type": "string"
+    },
+    "transactionDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "transactionState": {
+     "type": "boolean"
+    }
+   }
+  },
+  "GuestDTO": {
+   "id": "GuestDTO",
+   "type": "object",
+   "properties": {
+    "accepted": {
+     "type": "boolean"
+    },
+    "email": {
+     "type": "string"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "invitationSent": {
+     "type": "boolean"
+    },
+    "pollaDTO": {
+     "$ref": "PollaDTO"
+    },
+    "user": {
+     "$ref": "UserDTO"
+    },
+    "userAdmin": {
+     "$ref": "UserDTO"
+    }
+   }
+  },
+  "MsgAddGuestPollaRequest": {
+   "id": "MsgAddGuestPollaRequest",
+   "type": "object",
+   "properties": {
+    "contextRequestDTO": {
+     "$ref": "ContextRequestDTO"
+    },
+    "emails": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "idPolla": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "idUserAdmin": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgAddGuestPollaResponse": {
+   "id": "MsgAddGuestPollaResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "MsgAddPollaRequest": {
+   "id": "MsgAddPollaRequest",
+   "type": "object",
+   "properties": {
+    "contextRequestDTO": {
+     "$ref": "ContextRequestDTO"
+    },
+    "emails": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "idUser": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "namePolla": {
+     "type": "string"
+    }
+   }
+  },
+  "MsgAddPollaResponse": {
+   "id": "MsgAddPollaResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "idPolla": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgGetAllGuestUsersResponse": {
+   "id": "MsgGetAllGuestUsersResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "lstGuestDTO": {
+     "type": "array",
+     "items": {
+      "$ref": "GuestDTO"
+     }
+    }
+   }
+  },
+  "MsgGetGuestByUserResponse": {
+   "id": "MsgGetGuestByUserResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "lstGuestDTO": {
+     "type": "array",
+     "items": {
+      "$ref": "GuestDTO"
+     }
+    }
+   }
+  },
+  "MsgGetPollasByUserResponse": {
+   "id": "MsgGetPollasByUserResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "lstPollaDTO": {
+     "type": "array",
+     "items": {
+      "$ref": "PollaDTO"
+     }
+    }
+   }
+  },
+  "MsgRemoveGuestUserResponse": {
+   "id": "MsgRemoveGuestUserResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "MsgUpdateAcceptedInvitationRequest": {
+   "id": "MsgUpdateAcceptedInvitationRequest",
+   "type": "object",
+   "properties": {
+    "accepted": {
+     "type": "boolean"
+    },
+    "contextRequestDTO": {
+     "$ref": "ContextRequestDTO"
+    },
+    "idPolla": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "idUser": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgUpdateAcceptedInvitationResponse": {
+   "id": "MsgUpdateAcceptedInvitationResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "PollaDTO": {
+   "id": "PollaDTO",
+   "type": "object",
+   "properties": {
+    "createdDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "nombre": {
+     "type": "string"
+    }
+   }
+  },
+  "UserDTO": {
+   "id": "UserDTO",
+   "type": "object",
+   "properties": {
+    "email": {
+     "type": "string"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "lastName": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "password": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "pollasendpoint.addGuestPolla": {
+   "id": "pollasendpoint.addGuestPolla",
+   "parameters": {
+    "resource": {
+     "$ref": "MsgAddGuestPollaRequest"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "MsgAddGuestPollaResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.addPolla": {
+   "id": "pollasendpoint.addPolla",
+   "parameters": {
+    "resource": {
+     "$ref": "MsgAddPollaRequest"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "MsgAddPollaResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.getAllGuestUsers": {
+   "id": "pollasendpoint.getAllGuestUsers",
+   "allowGet": true,
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true
+    },
+    "idPolla": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idPolla",
+    "idTransaction",
+    "user"
+   ],
+   "returns": {
+    "$ref": "MsgGetAllGuestUsersResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.getGuestByUser": {
+   "id": "pollasendpoint.getGuestByUser",
+   "allowGet": true,
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true
+    },
+    "idUser": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idTransaction",
+    "idUser",
+    "user"
+   ],
+   "returns": {
+    "$ref": "MsgGetGuestByUserResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.getPollasByUser": {
+   "id": "pollasendpoint.getPollasByUser",
+   "allowGet": true,
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true
+    },
+    "idUser": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idTransaction",
+    "idUser",
+    "user"
+   ],
+   "returns": {
+    "$ref": "MsgGetPollasByUserResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.removeGuestUser": {
+   "id": "pollasendpoint.removeGuestUser",
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true
+    },
+    "idGuest": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idGuest",
+    "idTransaction",
+    "user"
+   ],
+   "returns": {
+    "$ref": "MsgRemoveGuestUserResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pollasendpoint.updateAcceptedInvitation": {
+   "id": "pollasendpoint.updateAcceptedInvitation",
+   "parameters": {
+    "resource": {
+     "$ref": "MsgUpdateAcceptedInvitationRequest"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "MsgUpdateAcceptedInvitationResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

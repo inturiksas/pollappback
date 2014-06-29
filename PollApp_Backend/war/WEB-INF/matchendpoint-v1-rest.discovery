@@ -1,0 +1,437 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"0NZZm4UuLZgEQBhMTwnFS1XIMrM/4AyW9WqQ_6u6n-qyF_j3kV63mV4\"",
+ "discoveryVersion": "v1",
+ "id": "matchendpoint:v1",
+ "name": "matchendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "pollapp.us",
+ "ownerName": "pollapp.us",
+ "packagePath": "inturik.endpoints",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://pollappusinturik.appspot.com/_ah/api/matchendpoint/v1/",
+ "basePath": "/_ah/api/matchendpoint/v1/",
+ "rootUrl": "https://pollappusinturik.appspot.com/_ah/api/",
+ "servicePath": "matchendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "ContextRequestDTO": {
+   "id": "ContextRequestDTO",
+   "type": "object",
+   "properties": {
+    "applicationName": {
+     "type": "string"
+    },
+    "idTransaction": {
+     "type": "string"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "pageSize": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "userName": {
+     "type": "string"
+    }
+   }
+  },
+  "ContextResponseDTO": {
+   "id": "ContextResponseDTO",
+   "type": "object",
+   "properties": {
+    "idTransaccion": {
+     "type": "string"
+    },
+    "transactionDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "transactionState": {
+     "type": "boolean"
+    }
+   }
+  },
+  "MatchDTO": {
+   "id": "MatchDTO",
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "flagTeamA": {
+     "type": "string"
+    },
+    "flagTeamB": {
+     "type": "string"
+    },
+    "hour": {
+     "type": "string"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "nameGroup": {
+     "type": "string"
+    },
+    "resultTeamA": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "resultTeamB": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "round": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "stadium": {
+     "type": "string"
+    },
+    "teamA": {
+     "type": "string"
+    },
+    "teamB": {
+     "type": "string"
+    }
+   }
+  },
+  "MsgGetMatchsByRoundResponse": {
+   "id": "MsgGetMatchsByRoundResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "lstMatchDTO": {
+     "type": "array",
+     "items": {
+      "$ref": "MatchDTO"
+     }
+    }
+   }
+  },
+  "MsgGetResulstMatchResponse": {
+   "id": "MsgGetResulstMatchResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    },
+    "lstResultMatchDTO": {
+     "type": "array",
+     "items": {
+      "$ref": "ResultMatchDTO"
+     }
+    }
+   }
+  },
+  "MsgSetResultMatchRequest": {
+   "id": "MsgSetResultMatchRequest",
+   "type": "object",
+   "properties": {
+    "contextRequestDTO": {
+     "$ref": "ContextRequestDTO"
+    },
+    "idMatch": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "idPolla": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "idUser": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "scoreTeamA": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "scoreTeamB": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgSetResultMatchResponse": {
+   "id": "MsgSetResultMatchResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "MsgUpdateResultMatchOriginalRequest": {
+   "id": "MsgUpdateResultMatchOriginalRequest",
+   "type": "object",
+   "properties": {
+    "contextRequestDTO": {
+     "$ref": "ContextRequestDTO"
+    },
+    "idMatch": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "scoreTeamAOrg": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "scoreTeamBOrg": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "MsgUpdateResultMatchOriginalResponse": {
+   "id": "MsgUpdateResultMatchOriginalResponse",
+   "type": "object",
+   "properties": {
+    "contextResponse": {
+     "$ref": "ContextResponseDTO"
+    }
+   }
+  },
+  "ResultMatchDTO": {
+   "id": "ResultMatchDTO",
+   "type": "object",
+   "properties": {
+    "idResultMatch": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "lastName": {
+     "type": "string"
+    },
+    "names": {
+     "type": "string"
+    },
+    "scoreTeamA": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "scoreTeamB": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "totalScore": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getMatchsByRound": {
+   "id": "matchendpoint.getMatchsByRound",
+   "path": "getMatchsByRound",
+   "httpMethod": "GET",
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "idRound": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "pageSize": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idRound",
+    "idTransaction",
+    "pageNumber",
+    "pageSize",
+    "user"
+   ],
+   "response": {
+    "$ref": "MsgGetMatchsByRoundResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "getResultsMatch": {
+   "id": "matchendpoint.getResultsMatch",
+   "path": "getResultsMatch",
+   "httpMethod": "GET",
+   "parameters": {
+    "application": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "idMatch": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "idPolla": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "idTransaction": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "pageNumber": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "pageSize": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "application",
+    "idMatch",
+    "idPolla",
+    "idTransaction",
+    "pageNumber",
+    "pageSize",
+    "user"
+   ],
+   "response": {
+    "$ref": "MsgGetResulstMatchResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "setResultMatchByUser": {
+   "id": "matchendpoint.setResultMatchByUser",
+   "path": "setResultMatchByUser",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "MsgSetResultMatchRequest",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "MsgSetResultMatchResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateResultMatchOriginal": {
+   "id": "matchendpoint.updateResultMatchOriginal",
+   "path": "updateResultMatchOriginal",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "MsgUpdateResultMatchOriginalRequest",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "MsgUpdateResultMatchOriginalResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

@@ -1,0 +1,506 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://pollappusinturik.appspot.com/_ah/api",
+  "name" : "pollasendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://pollappusinturik.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "pollapp.us",
+  "ownerName" : "pollapp.us",
+  "packagePath" : "inturik.endpoints",
+  "methods" : {
+    "pollasendpoint.updateAcceptedInvitation" : {
+      "path" : "updateAcceptedInvitation",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.updateAcceptedInvitation",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.getPollasByUser" : {
+      "path" : "getPollasByUser",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.getPollasByUser",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idUser" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.removeGuestUser" : {
+      "path" : "removeGuestUser",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.removeGuestUser",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idGuest" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.getAllGuestUsers" : {
+      "path" : "getAllGuestUsers",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.getAllGuestUsers",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idPolla" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.addGuestPolla" : {
+      "path" : "addGuestPolla",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.addGuestPolla",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.addPolla" : {
+      "path" : "addPolla",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.addPolla",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "pollasendpoint.getGuestByUser" : {
+      "path" : "getGuestByUser",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "us.pollapp.inturik.endpoints.PollasEndpoint.getGuestByUser",
+      "request" : {
+        "parameters" : {
+          "idTransaction" : {
+            "type" : "string",
+            "required" : true
+          },
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "application" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idUser" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "MsgUpdateAcceptedInvitationRequest" : {
+        "id" : "MsgUpdateAcceptedInvitationRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequestDTO" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "idPolla" : {
+            "type" : "integer"
+          },
+          "idUser" : {
+            "type" : "integer"
+          },
+          "accepted" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "ContextRequestDTO" : {
+        "id" : "ContextRequestDTO",
+        "type" : "object",
+        "properties" : {
+          "idTransaction" : {
+            "type" : "string"
+          },
+          "userName" : {
+            "type" : "string"
+          },
+          "applicationName" : {
+            "type" : "string"
+          },
+          "pageNumber" : {
+            "type" : "integer"
+          },
+          "pageSize" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgUpdateAcceptedInvitationResponse" : {
+        "id" : "MsgUpdateAcceptedInvitationResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      },
+      "ContextResponseDTO" : {
+        "id" : "ContextResponseDTO",
+        "type" : "object",
+        "properties" : {
+          "transactionDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "transactionState" : {
+            "type" : "boolean"
+          },
+          "idTransaccion" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MsgGetPollasByUserResponse" : {
+        "id" : "MsgGetPollasByUserResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "lstPollaDTO" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "PollaDTO"
+            }
+          }
+        }
+      },
+      "PollaDTO" : {
+        "id" : "PollaDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "createdDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "MsgRemoveGuestUserResponse" : {
+        "id" : "MsgRemoveGuestUserResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      },
+      "MsgGetAllGuestUsersResponse" : {
+        "id" : "MsgGetAllGuestUsersResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "lstGuestDTO" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "GuestDTO"
+            }
+          }
+        }
+      },
+      "GuestDTO" : {
+        "id" : "GuestDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "accepted" : {
+            "type" : "boolean"
+          },
+          "invitationSent" : {
+            "type" : "boolean"
+          },
+          "pollaDTO" : {
+            "$ref" : "PollaDTO"
+          },
+          "user" : {
+            "$ref" : "UserDTO"
+          },
+          "userAdmin" : {
+            "$ref" : "UserDTO"
+          }
+        }
+      },
+      "UserDTO" : {
+        "id" : "UserDTO",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MsgAddGuestPollaRequest" : {
+        "id" : "MsgAddGuestPollaRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequestDTO" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "emails" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "idPolla" : {
+            "type" : "integer"
+          },
+          "idUserAdmin" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgAddGuestPollaResponse" : {
+        "id" : "MsgAddGuestPollaResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          }
+        }
+      },
+      "MsgAddPollaRequest" : {
+        "id" : "MsgAddPollaRequest",
+        "type" : "object",
+        "properties" : {
+          "contextRequestDTO" : {
+            "$ref" : "ContextRequestDTO"
+          },
+          "namePolla" : {
+            "type" : "string"
+          },
+          "idUser" : {
+            "type" : "integer"
+          },
+          "emails" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "MsgAddPollaResponse" : {
+        "id" : "MsgAddPollaResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "idPolla" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "MsgGetGuestByUserResponse" : {
+        "id" : "MsgGetGuestByUserResponse",
+        "type" : "object",
+        "properties" : {
+          "contextResponse" : {
+            "$ref" : "ContextResponseDTO"
+          },
+          "lstGuestDTO" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "GuestDTO"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "us.pollapp.inturik.endpoints.PollasEndpoint.updateAcceptedInvitation" : {
+        "request" : {
+          "$ref" : "MsgUpdateAcceptedInvitationRequest"
+        },
+        "response" : {
+          "$ref" : "MsgUpdateAcceptedInvitationResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.getPollasByUser" : {
+        "response" : {
+          "$ref" : "MsgGetPollasByUserResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.removeGuestUser" : {
+        "response" : {
+          "$ref" : "MsgRemoveGuestUserResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.getAllGuestUsers" : {
+        "response" : {
+          "$ref" : "MsgGetAllGuestUsersResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.addGuestPolla" : {
+        "request" : {
+          "$ref" : "MsgAddGuestPollaRequest"
+        },
+        "response" : {
+          "$ref" : "MsgAddGuestPollaResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.addPolla" : {
+        "request" : {
+          "$ref" : "MsgAddPollaRequest"
+        },
+        "response" : {
+          "$ref" : "MsgAddPollaResponse"
+        }
+      },
+      "us.pollapp.inturik.endpoints.PollasEndpoint.getGuestByUser" : {
+        "response" : {
+          "$ref" : "MsgGetGuestByUserResponse"
+        }
+      }
+    }
+  }
+}

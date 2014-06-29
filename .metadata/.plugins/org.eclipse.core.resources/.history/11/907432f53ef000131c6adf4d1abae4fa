@@ -1,0 +1,22 @@
+package us.pollapp.inturik.util;
+
+import java.util.logging.Logger;
+
+import us.pollapp.inturik.businesslogic.LModels;
+
+public class Error {
+	
+	private static final Logger log = Logger.getLogger(LModels.class.getName());
+	
+	public static void SendError(String clase, String message){
+	
+		try {
+			
+			Email.sendEmail(Constant.EMAIL_SEND_ERROR, message, "Error backend Pollapp !!");
+			
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		}
+	}
+
+}
